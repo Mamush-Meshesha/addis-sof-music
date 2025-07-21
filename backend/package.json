@@ -12,7 +12,9 @@
     "prisma:migrate": "prisma migrate dev --name init",
     "prisma:studio": "prisma studio",
     "prisma:reset": "prisma migrate reset --force",
-    "prisma:seed": "node prisma/seed.js"
+    "prisma:seed": "node prisma/seed.js",
+    "build": "echo 'No build step required'"
+
   },
   "author": "Mamush",
   "license": "ISC",
