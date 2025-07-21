@@ -69,3 +69,33 @@ Throughout the project, I also used AI for some debugging and fix suggestions �
 ## ⚠️ Git Commit Notes
 
 I didn’t use `feat:` or `fix:` prefixes, but all commits have clear and descriptive messages.
+
+# 🔧 Project Usage
+
+# Clone the repository
+git clone git@github.com:Mamush-Meshesha/addis-sof-music.git
+
+# Go to the project directory
+cd addis-sof-music
+
+# Set up the frontend
+cd frontend
+npm install
+
+# Set up environment variables
+cp .env.example .env
+# Edit the .env file with appropriate values
+
+# Start the development server
+npm run dev
+
+# Set up the backend
+cd ../backend
+npm install
+
+# Set up environment variables for backend
+cp .env.example .env
+# Edit the backend .env file as needed
+
+# Start the backend server
+npm run dev
