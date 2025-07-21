@@ -1,12 +1,15 @@
 import React from "react";
 
+import GlobalStyles from "./style/global";
+import Index from "./pages";
+
 const App = () => {
   return (
-    <div>
-      <h1>Hello adis softwares</h1>
-      <p>This is a song management.</p>
-    </div>
+    <>
+      <GlobalStyles />
+      <Index />
+    </>
   );
-}
+};
 
 export default App;
