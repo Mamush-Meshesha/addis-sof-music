@@ -6,7 +6,6 @@ import multer from "multer";
 const createUploadRouter = (uploadsDir) => {
   const router = Router();
 
-  // Configure multer
   const storage = multer.diskStorage({
     destination: "uploads",
     filename: (req, file, cb) => {

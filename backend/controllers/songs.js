@@ -3,7 +3,7 @@ const prisma = new PrismaClient();
 
 const getSongs = async (req, res) => {
   try {
-    const { page = 1, limit = 10, search = "", genre = "" } = req.query;
+    const { page = 1, limit = 4, search = "", genre = "" } = req.query;
 
     const skip = (parseInt(page) - 1) * parseInt(limit);
     const filters = {};
