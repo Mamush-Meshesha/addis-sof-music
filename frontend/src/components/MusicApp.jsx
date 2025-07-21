@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,lazy,Suspense } from "react";
 import { FaMusic, FaPlus } from "react-icons/fa";
 import {
   AppContainer,
@@ -8,10 +8,12 @@ import {
   Logo,
   MainContent,
 } from "./styled/styledComponents";
-import SongList from "./SongList";
-import SongFormWithUpload from "./SongFormWithUpload";
-import AudioPlayer from "./AudioPlayer";
-import SearchAndFilter from "./SearchAndFilter";
+const SongList = lazy(() => import("./SongList"));
+const SongFormWithUpload = lazy(() => import("./SongFormWithUpload"));
+const AudioPlayer = lazy(() => import("./AudioPlayer"));
+const SearchAndFilter = lazy(() => import("./SearchAndFilter")); // Consider if this is always needed immediately
+
+
 
 const MusicApp = () => {
   const [viewMode, setViewMode] = useState("list");
@@ -56,6 +58,7 @@ const MusicApp = () => {
         </HeaderContent>
       </Header>
       <MainContent>
+      <Suspense fallback={<div>Loading Search and Filter...</div>}>
         <SearchAndFilter
           searchTerm={searchTerm}
           setSearchTerm={setSearchTerm}
@@ -64,20 +67,26 @@ const MusicApp = () => {
           viewMode={viewMode}
           onViewModeChange={setViewMode}
         />
-
+      </Suspense>
+       <Suspense fallback={<div></div>}>
         <SongList
           viewMode={viewMode}
           onEditSong={handleEditSong}
           searchTerm={searchTerm}
           selectedGenre={selectedGenre}
         />
+        </Suspense>
       </MainContent>
+       <Suspense fallback={<div></div>}>
       <SongFormWithUpload
         isOpen={isFormOpen}
         onClose={handleCloseForm}
         song={editingSong}
       />
+      </Suspense>
+      <Suspense fallback={<div></div>}>
       <AudioPlayer />
+      </Suspense>
     </AppContainer>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, lazy, Suspense } from "react";
 import {
   ActionButtons,
   IconButton,
@@ -24,9 +24,11 @@ import {
   fetchSongsRequest,
   setCurrentPage,
 } from "../stores/slices/songSlice";
-import MusicVisualization from "./MusicVisualization";
 import { FaEdit, FaMusic, FaPause, FaPlay, FaTrashAlt } from "react-icons/fa";
 import { pauseSong, playSong } from "../stores/slices/playerSlice";
+const MusicVisualization = lazy(() =>
+  import("../components/MusicVisualization")
+);
 
 const SongList = ({ viewMode, onEditSong, searchTerm, selectedGenre }) => {
   const dispatch = useDispatch();
@@ -37,8 +39,14 @@ const SongList = ({ viewMode, onEditSong, searchTerm, selectedGenre }) => {
   const { currentSong, isPlaying } = useSelector((state) => state.audioPlayer);
 
   useEffect(() => {
-    dispatch(fetchSongsRequest({ page: currentPage, search: searchTerm, genre: selectedGenre }));
-  }, [dispatch,currentPage, searchTerm, selectedGenre]);
+    dispatch(
+      fetchSongsRequest({
+        page: currentPage,
+        search: searchTerm,
+        genre: selectedGenre,
+      })
+    );
+  }, [dispatch, currentPage, searchTerm, selectedGenre]);
 
   const handleDeleteSong = (id) => {
     if (window.confirm("Are you sure you want to delete this song?")) {
@@ -72,8 +80,7 @@ const SongList = ({ viewMode, onEditSong, searchTerm, selectedGenre }) => {
   }
   const totalPagesNum = Number(totalPages) || 0;
   console.log("total page", totalPagesNum);
-    console.log("total  1", totalPages);
-
+  console.log("total  1", totalPages);
 
   const renderListView = () => (
     <SongListView>
@@ -90,7 +97,9 @@ const SongList = ({ viewMode, onEditSong, searchTerm, selectedGenre }) => {
             isPlaying={songIsPlaying}
           >
             {songIsPlaying && (
-              <MusicVisualization isPlaying={songIsPlaying} size="small" />
+              <Suspense fallback={null}>
+                <MusicVisualization isPlaying={songIsPlaying} size="small" />
+              </Suspense>
             )}
 
             <SongListThumbnail>
