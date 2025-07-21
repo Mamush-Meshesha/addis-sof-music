@@ -9,6 +9,7 @@ import {
   ModalHeader,
 } from "./styled/styledComponents";
 import { FaTimes } from "react-icons/fa";
+import FileUpload from "./FileUpload";
 const song = {
     title: "Sample Song",
     artist: "Sample Artist",
@@ -76,11 +77,15 @@ const SongFormWithUpload = ({isOpen, onClose,}) => {
         <Form>
           <FormGroup>
             <Label>Audio File</Label>
-            <input type="file" accept="audio/*" />
+            <FileUpload 
+                 type="audio"
+              accept="audio/*"
+            />
           </FormGroup>
           <FormGroup>
             <Label>Thumbnail</Label>
-            <input type="image" placeholder="Enter song background" />
+            <FileUpload  type="image"
+              accept="image/*"/>
           </FormGroup>
           <FormGroup>
             <Label>Title</Label>

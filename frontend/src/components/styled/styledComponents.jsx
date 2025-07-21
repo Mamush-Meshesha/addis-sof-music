@@ -358,3 +358,302 @@ export const Form = styled.form`
   gap: 1rem;
 `;
 
+export const AudioPlayerContainer = styled(motion.div)`
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--gradient-card);
+  backdrop-filter: blur(20px);
+  border-top: 1px solid hsl(var(--border));
+  padding: 1rem 2rem;
+  display: grid;
+  grid-template-columns: 1fr auto 2fr auto;
+  gap: 2rem;
+  align-items: center;
+  z-index: 100;
+  box-shadow: 0 -10px 30px -10px hsl(var(--background) / 0.8);
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 1rem;
+  }
+`;
+
+export const FilePreview = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: hsl(var(--muted) / 0.5);
+  border-radius: calc(var(--radius) - 2px);
+  margin-top: 1rem;
+`;
+
+export const FileIcon = styled.div`
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: calc(var(--radius) - 4px);
+  background: hsl(var(--primary) / 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: hsl(var(--primary));
+  flex-shrink: 0;
+`;
+
+export const FileInfo = styled.div`
+  flex: 1;
+  min-width: 0;
+
+  h5 {
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin: 0 0 0.25rem 0;
+    color: hsl(var(--foreground));
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  p {
+    font-size: 0.75rem;
+    color: hsl(var(--muted-foreground));
+    margin: 0;
+  }
+`;
+export const ProgressContainer = styled.div`
+  margin-top: 1rem;
+`;
+
+export const ProgressLabel = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+  color: hsl(var(--foreground));
+`;
+
+export const ProgressBarUpload = styled.div`
+  width: 100%;
+  height: 8px;
+  background: hsl(var(--muted));
+  border-radius: 4px;
+  overflow: hidden;
+`;
+
+export const ProgressFill = styled.div`
+  width: ${props => props.progress}%;
+  height: 100%;
+  background: var(--gradient-primary);
+  transition: width 0.3s ease;
+  border-radius: 4px;
+`;
+
+export const RemoveButton = styled.button`
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: hsl(var(--destructive) / 0.1);
+  border: 1px solid hsl(var(--destructive) / 0.2);
+  color: hsl(var(--destructive));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+
+  &:hover {
+    background: hsl(var(--destructive) / 0.2);
+    transform: scale(1.05);
+  }
+`;
+
+export const Thumbnail = styled.div`
+  width: 3rem;
+  height: 3rem;
+  border-radius: calc(var(--radius) - 2px);
+  background: hsl(var(--muted));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  svg {
+    color: hsl(var(--muted-foreground));
+  }
+`;
+
+export const TrackInfo = styled.div`
+  min-width: 0;
+  flex: 1;
+
+  h4 {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: hsl(var(--foreground));
+    margin: 0 0 0.25rem 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  p {
+    font-size: 0.75rem;
+    color: hsl(var(--muted-foreground));
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+`;
+
+export const PlayerControls = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: center;
+`;
+
+export const PlayButton = styled.button`
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: var(--gradient-primary);
+  border: none;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  box-shadow: var(--shadow-glow);
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px hsl(var(--primary) / 0.4);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+`;
+
+export const SecondaryButton = styled.button`
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: ${props => props.active ? 'hsl(var(--primary) / 0.2)' : 'transparent'};
+  border: 1px solid ${props => props.active ? 'hsl(var(--primary))' : 'transparent'};
+  color: ${props => props.active ? 'hsl(var(--primary))' : 'hsl(var(--muted-foreground))'};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  position: relative;
+
+  &:hover {
+    background: hsl(var(--muted));
+    color: hsl(var(--foreground));
+    transform: scale(1.05);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+`;
+
+export const ProgressSection = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+  max-width: 500px;
+  justify-self: center;
+
+  @media (max-width: 768px) {
+    order: -1;
+    max-width: none;
+  }
+`;
+
+export const ProgressBar = styled.div`
+  flex: 1;
+  height: 4px;
+  background: hsl(var(--muted));
+  border-radius: 2px;
+  cursor: pointer;
+  position: relative;
+  transition: var(--transition-smooth);
+
+  &:hover {
+    height: 6px;
+    
+    div {
+      height: 6px;
+    }
+  }
+`;
+
+export const ProgressHandle = styled.div`
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px hsl(var(--primary) / 0.3);
+  transition: var(--transition-smooth);
+`;
+
+export const VolumeSection = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  justify-self: end;
+
+  @media (max-width: 768px) {
+    justify-self: center;
+  }
+`;
+
+export const VolumeBar = styled.div`
+  width: 80px;
+  height: 4px;
+  background: hsl(var(--muted));
+  border-radius: 2px;
+  cursor: pointer;
+  position: relative;
+
+  &:hover {
+    height: 6px;
+    
+    div {
+      height: 6px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    width: 60px;
+  }
+`;
+
+export const TimeDisplay = styled.span`
+  font-size: 0.75rem;
+  color: hsl(var(--muted-foreground));
+  font-variant-numeric: tabular-nums;
+  min-width: 2.5rem;
+  text-align: center;
+`;
+

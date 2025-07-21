@@ -10,6 +10,7 @@ import {
 } from "./styled/styledComponents";
 import SongList from "./SongList";
 import SongFormWithUpload from "./SongFormWithUpload";
+import AudioPlayer from "./AudioPlayer";
 
 const MusicApp = () => {
   const [viewMode, setViewMode] = useState("list");
@@ -58,6 +59,7 @@ const MusicApp = () => {
         isOpen={isFormOpen}
         onClose={handleCloseForm}
       />
+      <AudioPlayer />
     </AppContainer>
   );
 };
