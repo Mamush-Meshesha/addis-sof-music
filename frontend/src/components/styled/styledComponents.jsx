@@ -656,4 +656,45 @@ export const TimeDisplay = styled.span`
   min-width: 2.5rem;
   text-align: center;
 `;
+export const SearchSection = styled.section`
+  margin-bottom: 2rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+`;
+
+export const Input = styled.input`
+  padding: 0.75rem;
+  border: 1px solid hsl(var(--border));
+  border-radius: calc(var(--radius) - 2px);
+  background: hsl(var(--input));
+  color: hsl(var(--foreground));
+  transition: var(--transition-smooth);
+
+  &:focus {
+    outline: none;
+    border-color: hsl(var(--primary));
+    box-shadow: 0 0 0 2px hsl(var(--primary) / 0.2);
+  }
+
+  &::placeholder {
+    color: hsl(var(--muted-foreground));
+  }
+`;
+
+export const Select = styled.select`
+  padding: 0.75rem;
+  border: 1px solid hsl(var(--border));
+  border-radius: calc(var(--radius) - 2px);
+  background: hsl(var(--input));
+  color: hsl(var(--foreground));
+  transition: var(--transition-smooth);
+
+  &:focus {
+    outline: none;
+    border-color: hsl(var(--primary));
+    box-shadow: 0 0 0 2px hsl(var(--primary) / 0.2);
+  }
+`;
 

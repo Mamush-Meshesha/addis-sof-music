@@ -11,6 +11,7 @@ import {
 import SongList from "./SongList";
 import SongFormWithUpload from "./SongFormWithUpload";
 import AudioPlayer from "./AudioPlayer";
+import SearchAndFilter from "./SearchAndFilter";
 
 const MusicApp = () => {
   const [viewMode, setViewMode] = useState("list");
@@ -53,12 +54,11 @@ const MusicApp = () => {
         </HeaderContent>
       </Header>
       <MainContent>
+        <SearchAndFilter viewMode={viewMode} onViewModeChange={setViewMode} />
+
         <SongList viewMode={viewMode} />
       </MainContent>
-      <SongFormWithUpload
-        isOpen={isFormOpen}
-        onClose={handleCloseForm}
-      />
+      <SongFormWithUpload isOpen={isFormOpen} onClose={handleCloseForm} />
       <AudioPlayer />
     </AppContainer>
   );
