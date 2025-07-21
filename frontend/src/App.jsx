@@ -1,14 +1,17 @@
 import React from "react";
 
-import GlobalStyles from "./style/global";
 import Index from "./pages";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import NotFound from "./pages/Notfound";
 
 const App = () => {
   return (
-    <>
-      <GlobalStyles />
-      <Index />
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Index />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </BrowserRouter>
   );
 };
 
