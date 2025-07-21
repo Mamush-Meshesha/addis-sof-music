@@ -85,6 +85,22 @@ const SongFormWithUpload = ({ isOpen, onClose, song }) => {
     }
   }, [song, isOpen]);
 
+   const simulateUpload = (file, setProgress, onComplete) => {
+    setProgress(0);
+    const interval = setInterval(() => {
+      setProgress((prev) => {
+        const next = prev + Math.random() * 15;
+        if (next >= 100) {
+          clearInterval(interval);
+          const url = URL.createObjectURL(file);
+          onComplete(url);
+          return 100;
+        }
+        return next;
+      });
+    }, 200);
+  };
+
   const handleAudioUpload = (file) => {
     setAudioFile(file);
     simulateUpload(file, setAudioProgress, (url) => {
