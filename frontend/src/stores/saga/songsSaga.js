@@ -13,13 +13,18 @@ import {
   deleteSongSuccess,
   deleteSongFailure,
 } from "../slices/songSlice";
+import axios from "axios";
 
 const API_BASE_URL =
   process.env.API_BASE_URL || "http://localhost:3000/api/songs";
 
-function* fetchSongs() {
+function* fetchSongs(action) {
   try {
-    const response = yield call(axios.get, `${API_BASE_URL}/songs`);
+        const { page = 1, searchTerm = "", selectedGenre = "" } = action.payload || {};
+
+    const response = yield call(axios.get, `${API_BASE_URL}/songs`, {
+      params: { page, search: searchTerm, genre: selectedGenre },
+    });
 
     yield put(fetchSongsSuccess(response.data));
     console.log("Saga: Dispatched fetchSongsSuccess with data:", response);

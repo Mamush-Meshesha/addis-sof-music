@@ -698,3 +698,172 @@ export const Select = styled.select`
   }
 `;
 
+
+export const Pagination = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+`;
+
+export const PaginationButton = styled.button`
+  padding: 0.5rem 1rem;
+  border: 1px solid hsl(var(--border));
+  background: ${(props) =>
+    props.active ? "var(--gradient-primary)" : "hsl(var(--card))"};
+  color: ${(props) => (props.active ? "white" : "hsl(var(--foreground))")};
+  border-radius: calc(var(--radius) - 2px);
+  cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
+  opacity: ${(props) => (props.disabled ? 0.5 : 1)};
+  transition: var(--transition-smooth);
+
+  &:hover:not(:disabled) {
+    background: ${(props) =>
+      props.active ? "var(--gradient-primary)" : "hsl(var(--muted))"};
+    transform: translateY(-1px);
+  }
+`;
+
+export const LoadingSpinner = styled.div`
+  width: 2rem;
+  height: 2rem;
+  border: 3px solid hsl(var(--muted));
+  border-top: 3px solid hsl(var(--primary));
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 2rem auto;
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+`;
+
+export const SongListThumbnail = styled.div`
+  width: 60px;
+  height: 60px;
+  border-radius: calc(var(--radius) - 2px);
+  overflow: hidden;
+  background: hsl(var(--muted));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+`;
+
+export const SongListInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+
+  h4 {
+    font-weight: 600;
+    margin: 0 0 0.25rem 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  p {
+    margin: 0 0 0.25rem 0;
+    color: hsl(var(--muted-foreground));
+    font-size: 0.875rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .meta {
+    font-size: 0.75rem;
+    color: hsl(var(--muted-foreground));
+    opacity: 0.8;
+  }
+`;
+
+export const SongListDuration = styled.div`
+  font-size: 0.875rem;
+  color: hsl(var(--muted-foreground));
+  text-align: right;
+  min-width: 50px;
+`;
+
+export const SongListActions = styled.div`
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+`;
+export const SongTitle = styled.h3`
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: hsl(var(--foreground));
+`;
+
+export const SongArtist = styled.p`
+  color: hsl(var(--primary));
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+`;
+
+export const SongDetails = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid hsl(var(--border));
+`;
+
+export const SongMeta = styled.div`
+  font-size: 0.875rem;
+  color: hsl(var(--muted-foreground));
+`;
+
+export const ActionButtons = styled.div`
+  display: flex;
+  gap: 0.5rem;
+`;
+
+export const UploadSection = styled.div`
+  border: 2px dashed hsl(var(--border));
+  border-radius: var(--radius);
+  padding: 2rem;
+  text-align: center;
+  transition: var(--transition-smooth);
+  cursor: pointer;
+  background: hsl(var(--card));
+
+  &:hover {
+    border-color: hsl(var(--primary));
+    background: hsl(var(--primary) / 0.05);
+  }
+
+  &.dragover {
+    border-color: hsl(var(--primary));
+    background: hsl(var(--primary) / 0.1);
+    transform: scale(1.02);
+  }
+`;
+
+export const UploadIcon = styled.div`
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: hsl(var(--primary) / 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  color: hsl(var(--primary));
+`;

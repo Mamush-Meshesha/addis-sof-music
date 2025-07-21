@@ -1,5 +1,10 @@
 import React, { useState } from "react";
-import { IconButton, Input, SearchSection, Select } from "./styled/styledComponents";
+import {
+  IconButton,
+  Input,
+  SearchSection,
+  Select,
+} from "./styled/styledComponents";
 import { FaFilter, FaList, FaSearch, FaTh, FaTimes } from "react-icons/fa";
 const genres = [
   "",
@@ -21,10 +26,22 @@ const genres = [
   "Soul",
   "Funk",
 ];
-const SearchAndFilter = ({ viewMode, onViewModeChange }) => {
-  const [localSearch, setLocalSearch] = useState("");
-  const [localGenre, setLocalGenre] = useState("");
+const SearchAndFilter = ({
+  viewMode,
+  onViewModeChange,
+  searchTerm,
+  setSearchTerm,
+  selectedGenre,
+  setSelectedGenre,
+}) => {
+ 
 
+  const hasActiveFilters = searchTerm || selectedGenre;
+
+  const clearFilters = () => {
+    setSearchTerm("");
+    setSelectedGenre("");
+  };
   return (
     <>
       <SearchSection>
@@ -42,13 +59,14 @@ const SearchAndFilter = ({ viewMode, onViewModeChange }) => {
           <Input
             type="text"
             placeholder="Search songs, artists, or albums..."
-            onChange={(e) => alert("finding...")}
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
             style={{ paddingLeft: "44px" }}
           />
         </div>
 
         <div style={{ position: "relative", minWidth: "160px" }}>
-          <FaFilter 
+          <FaFilter
             size={20}
             style={{
               position: "absolute",
@@ -59,7 +77,8 @@ const SearchAndFilter = ({ viewMode, onViewModeChange }) => {
             }}
           />
           <Select
-            onChange={(e) => alert("selecting")}
+            value={selectedGenre}
+            onChange={(e) => setSelectedGenre(e.target.value)}
             style={{ paddingLeft: "44px" }}
           >
             <option value="">All Genres</option>
@@ -88,7 +107,11 @@ const SearchAndFilter = ({ viewMode, onViewModeChange }) => {
           </IconButton>
         </div>
 
-        <FaTimes size={16} />
+        {hasActiveFilters && (
+          <IconButton onClick={clearFilters} title="Clear filters">
+            <FaTimes size={16} />
+          </IconButton>
+        )}
       </SearchSection>
     </>
   );

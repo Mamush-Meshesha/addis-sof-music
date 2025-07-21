@@ -10,17 +10,20 @@ const initialState = {
 };
 
 const songsSlice = createSlice({
-    name: "songs",
-    initialState,
-    reducers: {
-        fetchSongsRequest: (state, action) => {
+  name: "songs",
+  initialState,
+  reducers: {
+    fetchSongsRequest: (state, action) => {
       state.loading = true;
       state.error = null;
     },
     fetchSongsSuccess: (state, action) => {
       state.loading = false;
-      state.songs = action.payload || [];
+      state.songs = action.payload.songs;
+      state.totalPages = Math.ceil(action.payload.total / action.payload.limit);
+      state.currentPage = action.payload.page;
     },
+
     fetchSongsFailure: (state, action) => {
       state.loading = false;
       state.error = action.payload;
@@ -85,9 +88,8 @@ const songsSlice = createSlice({
     clearError: (state) => {
       state.error = null;
     },
-    }
-})
-
+  },
+});
 
 export const {
   fetchSongsRequest,

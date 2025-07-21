@@ -17,6 +17,8 @@ const MusicApp = () => {
   const [viewMode, setViewMode] = useState("list");
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [editingSong, setEditingSong] = useState(null);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedGenre, setSelectedGenre] = useState("");
 
   const handleAddSong = () => {
     setEditingSong(null);
@@ -54,11 +56,27 @@ const MusicApp = () => {
         </HeaderContent>
       </Header>
       <MainContent>
-        <SearchAndFilter viewMode={viewMode} onViewModeChange={setViewMode} />
+        <SearchAndFilter
+          searchTerm={searchTerm}
+          setSearchTerm={setSearchTerm}
+          selectedGenre={selectedGenre}
+          setSelectedGenre={setSelectedGenre}
+          viewMode={viewMode}
+          onViewModeChange={setViewMode}
+        />
 
-        <SongList viewMode={viewMode} />
+        <SongList
+          viewMode={viewMode}
+          onEditSong={handleEditSong}
+          searchTerm={searchTerm}
+          selectedGenre={selectedGenre}
+        />
       </MainContent>
-      <SongFormWithUpload isOpen={isFormOpen} onClose={handleCloseForm} />
+      <SongFormWithUpload
+        isOpen={isFormOpen}
+        onClose={handleCloseForm}
+        song={editingSong}
+      />
       <AudioPlayer />
     </AppContainer>
   );
