@@ -7,7 +7,7 @@ import {
   Title,
   Description,
   HomeLink,
-} from "../components/styled/NotFound";
+} from "../components/styled/Notfound";
 
 const NotFound = () => {
   const location = useLocation();
