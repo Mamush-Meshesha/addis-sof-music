@@ -62,7 +62,7 @@ Throughout the project, I also used AI for some debugging and fix suggestions â€
   - Then implemented the form on the frontend
 - **Performance**:
   - Implemented code splitting
-  - Lazy loading is planned
+  - Lazy loading is added for the main component
 
 ---
 
